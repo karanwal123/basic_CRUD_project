@@ -7,8 +7,7 @@ const Form = ({ data, setData, updatePost, setUpdatePost }) => {
     body: "",
   });
 
-  let isEmpty=Object.keys(updatePost).length === 0;
-
+  let isEmpty = Object.keys(updatePost).length === 0;
 
   useEffect(() => {
     if (updatePost) {
@@ -46,6 +45,9 @@ const Form = ({ data, setData, updatePost, setUpdatePost }) => {
 
   const handle_form_submit = (e) => {
     e.preventDefault();
+    const action=e.nativeEvent.submitter.value;
+    if(action==="ADD") add_post_data();
+    else update_post_data();
     add_post_data();
   };
 
@@ -71,10 +73,11 @@ const Form = ({ data, setData, updatePost, setUpdatePost }) => {
           className="text-base p-2 rounded border-2 border-black focus:outline-none focus:ring-2 focus:ring-green-500"
         />
         <button
+          value={isEmpty ? "ADD" : "UPDATE"}
           type="submit"
           className="bg-green-500 text-white px-6 py-2 rounded-lg border-2 border-black hover:bg-green-600 transition"
         >
-          ADD
+          {isEmpty ? "ADD" : "UPDATE"}
         </button>
       </div>
     </form>
