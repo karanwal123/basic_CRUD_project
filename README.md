@@ -1,12 +1,26 @@
-# React + Vite
+# Basic CRUD Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple CRUD (Create, Read, Update, Delete) web application built with **React.js** and **Node.js**.  
+It allows users to add, view, edit, and delete posts.
 
-Currently, two official plugins are available:
+## 🚀 Features
+- ✅ Fetch and display posts from an API
+- ✅ Add new posts
+- ✅ Edit existing posts
+- ✅ Delete posts
+- ✅ Responsive UI with Tailwind CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Icons:** Lucide React
 
-## Expanding the ESLint configuration
+## 📂 Project Structure
+/basic_CRUD_project │── /src │ ├── /components │ │ ├── Posts.jsx │ │ ├── Form.jsx │ 
+├── /api │ │ ├── PostApi.js │── package.json │── README.md
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Method	  Endpoint	  Description
+GET	     /posts	      Fetch all posts
+POST	   /posts	Add   a new post
+PUT	     /posts/:id	  Update a post
+DELETE	 /posts/:id	  Delete a post
