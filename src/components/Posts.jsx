@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { getPost, deletePost } from "../api/PostApi";
+import { getPost, deletePost, updateData } from "../api/PostApi";
 import Form from "./Form";
 import { Edit, Trash2, Loader } from "lucide-react";
 

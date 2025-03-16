@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { PostData } from "../api/PostApi";
-
-const Form = ({ data, setData, updatePost, setUpdatePost }) => {
+import { updateData } from "../api/PostApi";
+const Form = ({ data = [], setData, updatePost = {}, setUpdatePost }) => {
   const [addData, setAddData] = useState({
     title: "",
     body: "",
   });
 
-  let isEmpty = Object.keys(updatePost).length === 0;
+  let isEmpty = Object.keys(updatePost || {}).length === 0;
 
   useEffect(() => {
     if (updatePost) {
@@ -36,19 +36,37 @@ const Form = ({ data, setData, updatePost, setUpdatePost }) => {
             : [response.data]
         );
         setAddData({ title: "", body: "" });
-        setUpdatePost(null); // ✅ Reset updatePost
+        setUpdatePost(null);
       }
     } catch (error) {
       console.error("Error adding post:", error);
     }
   };
+  const update_post_data = async () => {
+    try {
+      const res = await updateData(updatePost.id, addData); // ✅ Correct API call
+
+      console.log(res);
+
+      if (res.status === 200) {
+        setData((prev) =>
+          prev.map((curr_ele) =>
+            curr_ele.id === updatePost.id
+              ? { ...curr_ele, ...res.data }
+              : curr_ele
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Failed to update post:", error);
+    }
+  };
 
   const handle_form_submit = (e) => {
     e.preventDefault();
-    const action=e.nativeEvent.submitter.value;
-    if(action==="ADD") add_post_data();
+    const action = e.nativeEvent.submitter.value;
+    if (action === "ADD") add_post_data();
     else update_post_data();
-    add_post_data();
   };
 
   return (
