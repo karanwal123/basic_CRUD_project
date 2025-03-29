@@ -24,3 +24,6 @@ GET	     /posts	      Fetch all posts
 POST	   /posts	Add   a new post
 PUT	     /posts/:id	  Update a post
 DELETE	 /posts/:id	  Delete a post
+
+
+Thank you for giving it a look..this is a learning project only 
